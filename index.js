@@ -1,26 +1,10 @@
-const xp = +prompt('Введіть значення параметру хp'); // Запрошуємо ввід параметру x початкового
-const xk = +prompt('Введіть значення параметру хk'); // Запрошуємо ввід параметру x кінцевого
-const dx = +prompt('Введіть значення параметру dx'); // Запрошуємо ввід параметру кроку
-const eps = +prompt('Введіть значення параметру eps'); // Запрошуємо ввід параметру точності
+const s = +prompt('Введіть значення s'); // Запрошуємо ввід значення вхідного параметру s
+const t = +prompt('Введіть значення t'); // Запрошуємо ввід значення вхідного параметру t
 
-console.log('|\tx\t\t|\tarctg(x)\t\t|\tS\t\t\t\t|\tn\t|');
-
-for (let x = xp; x <= xk && x < -1; x += dx) {
-  
-  let a = -1 / x;
-  let S = a;
-  let n = 0;
-
-  do {
-    n++;
-
-    let R = (1 - 2 * n) / (2 * n * x * x + x * x);
-    
-    a *= R;
-    S += a;
-  } while (Math.abs(a) >= eps);
-
-  let result = -Math.PI / 2 + S;
-
-  console.log(`|\t${x.toFixed(2)}\t|\t${Math.atan(x).toFixed(10)}\t|\t${result.toFixed(10)}\t|\t${n}\t|`);
+function f (a, b, c) {
+  return a * Math.sin(b) + b * Math.sin(a) + c * c;
 }
+
+let result = (f(1, t + s, s) + f(t, s * t, 1)) / (1 + Math.pow(f(s, 1, t), 2));
+
+console.log(result);
