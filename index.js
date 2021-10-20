@@ -8,4 +8,3 @@ function f (a, b, c) {
 let result = (f(1, t + s, s) + f(t, s * t, 1)) / (1 + Math.pow(f(s, 1, t), 2));
 
 console.log(result);
-console.log(f(0, 0, 0));
